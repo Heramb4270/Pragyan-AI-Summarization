@@ -1,17 +1,13 @@
-from PyPDF2 import PdfReader
-from text_summarizer import get_text_summary
-from dotenv import load_dotenv
-import google.generativeai as genai
-import os
 from docx import Document
-
-load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+# pip install python-docx
+from text_summarizer import get_text_summary
 
 def get_docx_summary(file):
+    # read the docx file
     doc = Document(file)
-    text = []
-    for paragraph in doc.paragraphs:
-        text += paragraph.text + "\n"
-    print(text)
-    return "Text"
+    text = ""
+    for para in doc.paragraphs:
+        text += para.text + "\n"
+    return get_text_summary(text)
+
+# print(get_docx_summary("./data/randomstory.docx"))
