@@ -5,7 +5,7 @@ from flask_cors import CORS
 # import custom functions
 from text_summarizer import get_text_summary
 from pdf_summarizer import get_pdf_summary
-
+from docx_summarizer import get_docx_summary
 app = Flask(__name__) 
 CORS(app)
 
@@ -22,11 +22,15 @@ def summarize():
 
 @app.route('/pdf-summary', methods=['POST'])
 def pdf_summary():
-    # get the file from form data
     file = request.files['file']
     summary = get_pdf_summary(file)
-
     return jsonify({"summary": summary})
+
+@app.route('/docx-summary',methods=['POST'])
+def docx_summary():
+    file = request.files['file']
+    summary = get_docx_summary(file)
+    return jsonify({"summary":summary})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
