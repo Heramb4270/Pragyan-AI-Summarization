@@ -19,5 +19,9 @@ def summarize():
     summarized_text = get_sentiment(text=text)
     return jsonify({"summary": summarized_text})
 
+@app.route('/pdf-summary', methods=['POST'])
+def pdf_summary():
+    return "aa"
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
