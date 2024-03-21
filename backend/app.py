@@ -21,7 +21,7 @@ def summarize():
 
 @app.route('/pdf-summary', methods=['POST'])
 def pdf_summary():
-    return "aa"
+    return 
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
