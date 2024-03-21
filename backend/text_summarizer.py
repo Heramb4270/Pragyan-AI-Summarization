@@ -1,6 +1,6 @@
 import google.generativeai as genai
 
-def get_summary(text):
+def get_text_summary(text):
     genai.configure(api_key="AIzaSyC897bCsmDp-Yc9fCrZtuj_0Pux_YMop6o")
 
     # Set up the model

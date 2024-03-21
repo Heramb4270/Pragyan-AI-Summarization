@@ -1,7 +1,7 @@
 from PyPDF2 import PdfReader
-from text_summarizer import get_summary
+from text_summarizer import get_text_summary
 
-def extract_text_from_pdf(file):
+def get_pdf_summary(file):
     reader = PdfReader(file)
     number_of_pages = len(reader.pages)
     text = ""
@@ -9,7 +9,7 @@ def extract_text_from_pdf(file):
         page = reader.pages[i]
         text += page.extract_text()
     
-    return get_summary(text)
+    return get_text_summary(text)
 
 # print(extract_text_from_pdf("./data/randomstory.pdf"))
 
