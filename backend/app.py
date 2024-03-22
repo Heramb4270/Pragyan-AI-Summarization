@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
-import google.generativeai as genai
 from flask_cors import CORS
 
 # import custom functions
 from text_summarizer import get_text_summary
 from pdf_summarizer import get_pdf_summary
 from docx_summarizer import get_docx_summary
-# from article_summarizer import article_summary
+
+# from article_summarizer import article_summary        
 from article_summarizer import article_summary
 from yt_video_summarizer import video_summary
 from image_summary import image_summary

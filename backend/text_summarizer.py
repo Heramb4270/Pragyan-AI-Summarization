@@ -1,7 +1,12 @@
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def get_text_summary(text):
-    genai.configure(api_key="AIzaSyC897bCsmDp-Yc9fCrZtuj_0Pux_YMop6o")
+    api_key = os.getenv("GENERATIVEAI_API_KEY")
+    genai.configure(api_key=api_key)
 
     # Set up the model
     generation_config = {
@@ -40,3 +45,4 @@ def get_text_summary(text):
 
     return convo.last.text
 
+# print(get_text_summary("The quick brown fox jumps over the lazy dog."))
