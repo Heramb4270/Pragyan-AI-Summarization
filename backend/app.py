@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import json
+
 import uuid
 import os
 # import custom functions
@@ -12,6 +14,7 @@ from audio_summarizer import audio_summary
 from article_summarizer import article_summary
 from yt_video_summarizer import video_summary
 from image_summary import image_summary
+from pdf_chatbot import get_chatbot_response
 
 
 app = Flask(__name__) 
@@ -118,6 +121,26 @@ def image_summary_api():
     os.remove(os.path.join('data', filename))
     return jsonify({"summary": summary['summary'].content})
 
+@app.route('/pdf-chatbot',methods=['POST'])
+def pdf_chatbot():
+    if 'file' not in request.files:
+        if 'message' not in request.form:
+            return jsonify({"error": "No Mesage found"}), 400
+        message = request.form['message']
+        response = get_chatbot_response(message=message)
+        return jsonify({"response": response})
+
+    file = request.files['file']
+   
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if not file.filename.endswith('.pdf'):
+        return jsonify({"error": "Invalid file type. Please upload a .pdf file"}), 400
+    
+    response = get_chatbot_response(file=file)
+
+    return jsonify({"response": response})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
