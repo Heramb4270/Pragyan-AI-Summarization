@@ -56,6 +56,8 @@ def excel_summary(filename):
             2. Suggest how to visualize the data in the column effectively (e.g., scatter plot for potential correlations).
         
         * Give Conclusion (in End Compulsory)
+        Dont Generate Bold and Italic Output (*,**)
+        give title in inside <strong> </strong> tag after <strong> </strong> add a <br/> and para text in <p> </p> tag and add 2</br> tag after every title and paragraph
         data : 
         row :- {row},
         col :- {col}

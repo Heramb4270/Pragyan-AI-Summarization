@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import json
+# import json
 import pandas as pd
 import uuid
 import os
@@ -95,7 +95,7 @@ def excel_summary_api():
         # filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
         # file.save(os.path.join('data', filename))
         # df = pd.read_excel(file,engine="openpyxl")
-        print("HEllo WOrld")
+        
     else :    
         if file.filename.endswith('.csv'):
             filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
