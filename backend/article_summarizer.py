@@ -10,9 +10,7 @@ def article_summary(link):
     llm = ChatGoogleGenerativeAI(model="gemini-pro")
     prompt_ai_template = PromptTemplate(
         input_variables=['link'],
-        template="""Summarize the following article for me: {link}"""
-
-     
+        template="""Summarize the following article for me: {link}"""   
     )
     res2 = prompt_ai_template.format(link=link);
 

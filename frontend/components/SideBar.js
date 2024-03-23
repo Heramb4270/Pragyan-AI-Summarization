@@ -6,6 +6,7 @@ import { FaImage } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { MdAudiotrack } from "react-icons/md";
+import { GrArticle } from "react-icons/gr";
 
 export default function SideBar( {setComponent} ) {
     return (
@@ -52,6 +53,12 @@ export default function SideBar( {setComponent} ) {
                         <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" onClick={() => setComponent("audio-summarizer")}>
                             <MdAudiotrack class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" />
                             <span class="flex-1 ms-3 whitespace-nowrap">Audio Summarizer</span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" onClick={() => setComponent("article-summarizer")}>
+                            <GrArticle class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" />
+                            <span class="flex-1 ms-3 whitespace-nowrap">Article Summarizer</span>
                         </a>
                     </li>
                 </ul>
