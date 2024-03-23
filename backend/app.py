@@ -26,6 +26,7 @@ def summarize():
     summarized_text = get_text_summary(text=text)
     return jsonify({"summary": summarized_text})
 
+
 @app.route('/pdf-summary', methods=['POST'])
 def pdf_summary():
     if 'file' not in request.files:
@@ -36,10 +37,12 @@ def pdf_summary():
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
 
-    if not file.filename.endswith('.docx'):
-        return jsonify({"error": "Invalid file type. Please upload a .docx file"}), 400
+    if not file.filename.endswith('.pdf'):
+        return jsonify({"error": "Invalid file type. Please upload a .pdf file"}), 400
     summary = get_pdf_summary(file)
     return jsonify({"summary": summary})
+
+
 
 @app.route('/docx-summary',methods=['POST'])
 def docx_summary():
@@ -58,6 +61,7 @@ def docx_summary():
     summary = get_docx_summary(file)
     return jsonify({"summary": summary})
 
+
 @app.route('/article-summary',methods=['POST'])
 def article_summary_api():
     data = request.get_json()
@@ -66,6 +70,7 @@ def article_summary_api():
     print(ans['summary'].content)
     return jsonify({'article_summary':ans['summary'].content})
 
+
 @app.route('/youtube-summary',methods=['POST'])
 def youtube_summary_api():
     data = request.get_json()
@@ -73,6 +78,7 @@ def youtube_summary_api():
     res = video_summary(video_link)
     print(res['summary'].content)
     return {"video_summary":res['summary'].content}
+
 
 @app.route('/image-summary',methods=['POST'])
 def image_summary_api():
@@ -89,5 +95,7 @@ def image_summary_api():
     
     summary = image_summary(file)
     return jsonify({"summary": summary})
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
