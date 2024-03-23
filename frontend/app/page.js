@@ -21,7 +21,7 @@ export default function Home() {
       <SideBar setComponent={setComponent} />
 
       <div class="p-4 sm:ml-64">
-        <div class="rounded-lg mt-14">
+        <div class="rounded-lg mt-16">
           {component === "text-summarizer" && <TextSummarizer />}
           {component === "pdf-summarizer" && <PdfSummarizer />}
           {component === "document-summarizer" && <DocumentSummarizer />}
