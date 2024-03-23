@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import NavBar from "@/components/NavBar";
 import SideBar from "@/components/SideBar";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import ImageSummarizer from "@/components/ImageSummarizer";
 import VideoSummarizer from "@/components/VideoSummarizer";
 import ExcelSummarizer from "@/components/ExcelSummarizer";
 import AudioSummarizer from "@/components/AudioSummarizer";
-
+import ArticleSummarizer from "@/components/ArticleSummarizer";
 
 export default function Home() {
   const [component, setComponent] = useState("text-summarizer");
@@ -29,6 +29,7 @@ export default function Home() {
           {component === "video-summarizer" && <VideoSummarizer />}
           {component === "excel-summarizer" && <ExcelSummarizer />}
           {component === "audio-summarizer" && <AudioSummarizer />}
+          {component === "article-summarizer" && <ArticleSummarizer />}
         </div>
       </div>
     </div>
