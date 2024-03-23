@@ -2,10 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
 
+import uuid
+import os
 # import custom functions
 from text_summarizer import get_text_summary
 from pdf_summarizer import get_pdf_summary
 from docx_summarizer import get_docx_summary
+from audio_summarizer import audio_summary
 
 # from article_summarizer import article_summary        
 from article_summarizer import article_summary
@@ -81,6 +84,24 @@ def youtube_summary_api():
     print(res['summary'].content)
     return {"video_summary":res['summary'].content}
 
+@app.route('/audio-summary',methods=['POST'])
+def audio_summary_api():
+    
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['file']
+   
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    
+    filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
+    file.save(os.path.join('data', filename))
+    res = audio_summary(filename)
+    os.remove(os.path.join('data', filename))
+
+    # print(res['summary'].content)
+    return {"audio_summary":res['summary'].content}
 
 @app.route('/image-summary',methods=['POST'])
 def image_summary_api():
@@ -92,11 +113,13 @@ def image_summary_api():
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
 
-    if not file.filename.endswith('.png') or file.filename.endswith('.jpeg') or file.filename.endswith('.jpg'):
-        return jsonify({"error": "Invalid file type. Please upload a image file"}), 400
-    
-    summary = image_summary(file)
-    return jsonify({"summary": summary})
+    filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
+    file.save(os.path.join('data', filename))
+    # if not file.filename.endswith('.png') or file.filename.endswith('.jpeg') or file.filename.endswith('.jpg'):
+    #     return jsonify({"error": "Invalid file type. Please upload a image file"}), 400
+    summary = image_summary(filename)
+    os.remove(os.path.join('data', filename))
+    return jsonify({"summary": summary['summary'].content})
 
 @app.route('/pdf-chatbot',methods=['POST'])
 def pdf_chatbot():

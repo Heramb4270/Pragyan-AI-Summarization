@@ -30,6 +30,6 @@ def video_summary(link):
      
     )
     res2 = prompt_ai_template.format(transcript=video_transcript);
-    res =llm.invoke(res2);
+    res =llm.invoke(res2)
     print(res)
     return {"summary":res}
