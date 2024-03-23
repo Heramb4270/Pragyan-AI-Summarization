@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
-
+import pandas as pd
 import uuid
 import os
 # import custom functions
@@ -9,6 +9,7 @@ from text_summarizer import get_text_summary
 from pdf_summarizer import get_pdf_summary
 from docx_summarizer import get_docx_summary
 from audio_summarizer import audio_summary
+from excel_csv_summarizer import excel_summary
 
 # from article_summarizer import article_summary        
 from article_summarizer import article_summary
@@ -66,6 +67,48 @@ def docx_summary():
     summary = get_docx_summary(file)
     return jsonify({"summary": summary})
 
+@app.route('/excel-summary',methods=['POST'])
+def excel_summary_api():
+   
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['file']
+    print(file.filename)
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    # if file.filename not in ('.xlsx', '.xls'):
+    #     return jsonify({"Error" : "Unsupported file format. Please upload an Excel file (.xlsx or .xls)"})
+
+    if  file.filename.endswith(".xlsx"):
+        try:
+            df = pd.read_excel(file, engine="openpyxl")
+            df.to_csv('./data/'+file.filename, index=False)
+            summary = excel_summary(file.filename)
+            os.remove(os.path.join('data', file.filename))
+            
+            
+
+        except Exception as e:
+            return jsonify({"error": f"Error reading Excel file: {e}"}), 400
+        # filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
+        # file.save(os.path.join('data', filename))
+        # df = pd.read_excel(file,engine="openpyxl")
+        print("HEllo WOrld")
+    else :    
+        if file.filename.endswith('.csv'):
+            filename = str(uuid.uuid4()) + os.path.splitext(file.filename)[1]
+            file.save(os.path.join('data', filename))
+            summary = excel_summary(filename)
+            os.remove(os.path.join('data', filename))
+
+
+        else:
+            return jsonify({"error": "Invalid file type"}), 400
+        
+
+    return jsonify({"summary": summary['excel_summary'].content})
 
 @app.route('/article-summary',methods=['POST'])
 def article_summary_api():

@@ -11,15 +11,15 @@ import os
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-def excel_summary():
+def excel_summary(filename):
 
-    df = pd.read_csv("./data/123.csv")
-    print(df)
+    df = pd.read_csv("./data/"+filename)
+    # print(df)
     for index, row in df.iterrows():
      row_text = " ".join(str(value) for value in row.tolist())  # Combine row values into a string
     for col in df.columns:
      column_text = " ".join(str(value) for value in df[col].tolist())
-    print(column_text,"Hello")
+    # print(column_text,"Hello")
     # summary_response = summarize_text_with_gemini(column_text)
     # Process the summary for each column
 
@@ -40,7 +40,7 @@ def excel_summary():
         
         * Descriptive statistics (if numerical):** If the column data appears numerical, calculate basic statistics like mean or median for that specific column based on the entire dataset .
         
-        * Relationships:** Are there any potential relationships between the data in the row and the data in the column? (e.g., If the row represents a product name, and the column represents a region, is there a relationship between product availability and region?)
+        * Relationships:** Are there any potential relationships between the data in the row and the data in the column? (e.g., If the row represents a product name, and the column represents a region, is there a relationship between product availability and region?) is yes then describe it
         
         * Data quality checks:** Does the data in the row or column seem unusual or inconsistent compared to other entries?
         
@@ -68,5 +68,5 @@ def excel_summary():
     print(summary_text)
     # Process the summary for each row
 
-    return 0
+    return {"excel_summary":summary_text}
 # excel_summary()
