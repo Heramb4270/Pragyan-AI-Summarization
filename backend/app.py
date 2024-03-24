@@ -16,6 +16,7 @@ from article_summarizer import article_summary
 from yt_video_summarizer import video_summary
 from image_summary import image_summary
 from pdf_chatbot import get_chatbot_response
+from docx_chatbot import get_chatbot_response1
 
 
 app = Flask(__name__) 
@@ -184,6 +185,28 @@ def pdf_chatbot():
     response = get_chatbot_response(file=file)
 
     return jsonify({"response": response})
+
+@app.route('/docx-chatbot',methods=['POST'])
+def docx_chatbot():
+    if 'file' not in request.files:
+        if 'message' not in request.form:
+            return jsonify({"error": "No Mesage found"}), 400
+        message = request.form['message']
+        response = get_chatbot_response1(message=message)
+        return jsonify({"response": response})
+
+    file = request.files['file']
+   
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if not file.filename.endswith('.docx'):
+        return jsonify({"error": "Invalid file type. Please upload a .docx file"}), 400
+    
+    response = get_chatbot_response1(file=file)
+
+    return jsonify({"response": response})
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
