@@ -13,7 +13,7 @@ const page = () => {
   return (
     <>
       <Head>
-        <title>Janhit - Adressing the peoples</title>
+        <title>Pragyan</title>
         <meta
           name="description"
           content="Nextly is a free lanith next.js & Tailwind CSS"

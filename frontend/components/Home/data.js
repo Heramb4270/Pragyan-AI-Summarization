@@ -1,5 +1,5 @@
 "use client";
-import logo2 from "../../public/img/aii.jpg";
+import logo2 from "../../public/img/aii.png";
 import {
   DevicePhoneMobileIcon,
   AdjustmentsHorizontalIcon,
