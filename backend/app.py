@@ -17,6 +17,7 @@ from yt_video_summarizer import video_summary
 from image_summary import image_summary
 from pdf_chatbot import get_chatbot_response
 from docx_chatbot import get_chatbot_response1
+from sentiment_analysis import get_sentiment_analysis
 
 
 app = Flask(__name__) 
@@ -206,6 +207,13 @@ def docx_chatbot():
     response = get_chatbot_response1(file=file)
 
     return jsonify({"response": response})
+
+@app.route('/sentiment-analysis', methods=['POST'])
+def sentiment_analysis():
+    data = request.get_json()
+    text = data['text']
+    sentiment, analysis = get_sentiment_analysis(text)
+    return jsonify({"sentiment": sentiment, "analysis": analysis})
 
 
 if __name__ == '__main__':
