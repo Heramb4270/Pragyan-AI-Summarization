@@ -1,13 +1,13 @@
 import Head from "next/head";
-import Hero from "/components/Home/hero";
-import Navbar from "/components/Home/navbar";
-import SectionTitle from "/components/Home/sectionTitle";
-import { benefitOne } from "/components/Home/data";
-import Video from "/components/Home/video";
-import Benefits from "/components/Home/benefits";
-import Footer from "/components/Home/footer";
-import Faq from "/components/Home/faq";
-import PopupWidget from "/components/Home/popupWidget";
+import Hero from "@/components/Home/hero";
+import Navbar from "@/components/Home/navbar";
+import SectionTitle from "@/components/Home/sectionTitle";
+import { benefitOne } from "@/components/Home/data";
+import Video from "@/components/Home/video";
+import Benefits from "@/components/Home/benefits";
+import Footer from "@/components/Home/footer";
+import Faq from "@/components/Home/faq";
+import PopupWidget from "@/components/Home/popupWidget";
 
 const page = () => {
   return (

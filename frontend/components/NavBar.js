@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start rtl:justify-end">
@@ -35,7 +35,7 @@ export default function NavBar() {
                 class="h-8 me-3"
                 alt="FlowBite Logo"
               />
-              <span class="self-center flex text-4xl font-bold  whitespace-nowrap  text-indigo-500">
+              <span class="self-center text-3xl font-bold  whitespace-nowrap  bg-gradient-to-r from-purple-600 to-blue-500 inline-block text-transparent bg-clip-text">
                 प्रज्ञान AI
               </span>
             </Link>
@@ -43,19 +43,19 @@ export default function NavBar() {
           <div class="self-center hidden md:flex items-center space-x-4 ">
             <Link
               href="/home"
-              class="self-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+              class="self-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-200 dark:hover:text-indigo-500 dark:focus:text-indigo-500 dark:focus:bg-indigo-100"
             >
               Home
             </Link>
             <Link
               href="/tools"
-              class="self-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+              class="self-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-200 dark:hover:text-indigo-500 dark:focus:text-indigo-500 dark:focus:bg-indigo-100"
             >
               Tools
             </Link>
             <Link
               href="/about"
-              class="self-center  inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none"
+              class="self-center  inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-200 dark:hover:text-indigo-500 dark:focus:text-indigo-500 dark:focus:bg-indigo-100"
             >
               About Us
             </Link>

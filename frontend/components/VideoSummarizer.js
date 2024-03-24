@@ -33,7 +33,7 @@ export default function VideoSummarizer() {
       }
       setLoading(false);
     } catch (error) {
-      setMessage("Something went wrong. Please try again later.");
+      setMessage("This video cannot be summarized. Please try another video.");
       setLoading(false);
     }
   };

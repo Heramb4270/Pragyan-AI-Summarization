@@ -12,7 +12,7 @@ generation_config = {
     "temperature": 0.9,
     "top_p": 0.5,  # Focus on high probability words, but allow some variation
     "top_k": 5,     # Consider top 5 most probable words at each step
-    "max_output_tokens": 2048,  # Maximum number of tokens to generate
+    "max_output_tokens": 1000,  # Maximum number of tokens to generate
 }
 
 safety_settings = [

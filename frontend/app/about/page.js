@@ -5,7 +5,7 @@ function page() {
   return (
     <>
       <NavBar />
-      <div class=" ml-24 mt-24 sm:flex items-center max-w-screen-xl ">
+      <div class=" ml-24 mt-24 sm:flex items-center max-w-screen-xl dark:text-gray-300">
         <div class="sm:w-1/2 p-10">
           <div class="image object-center text-center">
             <img src="https://i.imgur.com/WbQnbas.png" />
@@ -13,13 +13,15 @@ function page() {
         </div>
         <div class="sm:w-1/2 p-5">
           <div class="text">
-            <span class="text-gray-500 border-b-2 border-indigo-600 uppercase">
+            <span class="text-gray-500 border-b-2 border-indigo-600 uppercase dark:text-gray-300">
               About us
             </span>
             <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">
-              About <span class="text-indigo-600">Our Company</span>
+              About <span class="text-indigo-600
+                dark:text-indigo-400
+              ">Our Company</span>
             </h2>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Pragyan provides a number of smart AI tools that will help you to
               save your time by means of summarzing the text, generating the
               text, and many more. We are a team of developers who are
@@ -33,7 +35,7 @@ function page() {
           </div>
         </div>
       </div>
-      
+
       <div class="bg-gray-800 text-white ">
         <div class="container mx-auto p-8">
           <div class="flex flex-wrap">

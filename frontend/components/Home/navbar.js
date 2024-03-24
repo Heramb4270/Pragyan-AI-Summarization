@@ -80,7 +80,7 @@ const Navbar = () => {
                               }
                             }
                           }}
-                          className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none "
+                          className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-200 dark:hover:text-indigo-500 dark:focus:text-indigo-500 dark:focus:bg-indigo-100"
                         >
                           {menu}
                         </Link>
@@ -100,7 +100,7 @@ const Navbar = () => {
               <li className="mr-3 nav__item" key={index}>
                 <Link
                   href="/login"
-                  className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none "
+                  className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-200 dark:hover:text-indigo-500 dark:focus:text-indigo-500 dark:focus:bg-indigo-100"
                 >
                   {menu}
                 </Link>

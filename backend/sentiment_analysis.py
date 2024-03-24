@@ -20,15 +20,17 @@ def get_sentiment_analysis(text):
                                 generation_config=generation_config)
     convo = model.start_chat(history=[])    
     prompt = """
-    Analyze the sentiment of the text and classify it as one of the following categories: Analytical, Critical, Enthusiastic, Fearful, Joyful, Sad. (give me a sentiment word as a output that best describes the sentiment of the given text.) 
-    """ + text
+    Analyze the sentiment of the text and classify it as one of the following categories: Analytical, Critical, Enthusiastic, Fearful, Joyful, Sad, Questioning, or Neutral.
+    (give me a sentiment word as a output that best describes the sentiment of the given text.) 
+    Text:" """ + text + """ " """
     
     convo.send_message(prompt)
-    
     sentiment = convo.last.text
+    print (sentiment)   
     
     convo.send_message("give me brief explanation of the sentiment of the given text. Note: Dont Generate Bold and Italic Output (*,**)")
     
     analysis = convo.last.text
+    print (analysis)
    
     return sentiment, analysis

@@ -1,37 +1,61 @@
-"use client";
-import NavBar from "@/components/NavBar";
-import SideBar from "@/components/SideBar";
-import { useState } from "react";
-import TextSummarizer from "@/components/TextSummarizer";
-import PdfSummarizer from "@/components/PdfSummarizer";
-import DocumentSummarizer from "@/components/DocumentSummarizer";
-import ImageSummarizer from "@/components/ImageSummarizer";
-import VideoSummarizer from "@/components/VideoSummarizer";
-import ExcelSummarizer from "@/components/ExcelSummarizer";
-import AudioSummarizer from "@/components/AudioSummarizer";
-import ArticleSummarizer from "@/components/ArticleSummarizer";
+import Head from "next/head";
+import Hero from "@/components/Home/hero";
+import Navbar from "@/components/Home/navbar";
+import SectionTitle from "@/components/Home/sectionTitle";
+import { benefitOne } from "@/components/Home/data";
+import Video from "@/components/Home/video";
+import Benefits from "@/components/Home/benefits";
+import Footer from "@/components/Home/footer";
+import Faq from "@/components/Home/faq";
+import PopupWidget from "@/components/Home/popupWidget";
 
-export default function Home() {
-  const [component, setComponent] = useState("text-summarizer");
-
+const page = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 h-screen overflow-y-auto">
-      <NavBar />
+    <>
+      <Head>
+        <title>Janhit - Adressing the peoples</title>
+        <meta
+          name="description"
+          content="Nextly is a free lanith next.js & Tailwind CSS"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <SideBar setComponent={setComponent} />
-
-      <div class="p-4 sm:ml-64">
-        <div class="rounded-lg mt-16">
-          {component === "text-summarizer" && <TextSummarizer />}
-          {component === "pdf-summarizer" && <PdfSummarizer />}
-          {component === "document-summarizer" && <DocumentSummarizer />}
-          {component === "image-summarizer" && <ImageSummarizer />}
-          {component === "video-summarizer" && <VideoSummarizer />}
-          {component === "excel-summarizer" && <ExcelSummarizer />}
-          {component === "audio-summarizer" && <AudioSummarizer />}
-          {component === "article-summarizer" && <ArticleSummarizer />}
-        </div>
-      </div>
-    </div>
+      <Navbar />
+      <Hero />
+      <SectionTitle title=" Why should you use प्रज्ञान Ai">
+        Pragyan AI offers a suite of powerful summarization and sentiment
+        analysis tools, empowering users to efficiently extract key insights
+        from various media formats including text, documents, images, and
+        videos. It is powered by Gemini, a robust backend technology, enabling
+        seamless processing and analysis of data for efficient summarization and
+        sentiment analysis.
+      </SectionTitle>
+      <Benefits data={benefitOne} />
+      <SectionTitle
+        pretitle="Watch a video"
+        title="Learn how to use our tools "
+      ></SectionTitle>
+      <Video />
+      {/* <SectionTitle
+        pretitle="Testimonials"
+        title="Here's what our customers said"
+      >
+        Testimonails is a great way to increase the brand trust and awareness.
+        Use this section to highlight your popular customers.
+      </SectionTitle>
+      <Testimonials />
+      */}
+      <SectionTitle
+        pretitle="FAQ"
+        title="Frequently Asked Questions"
+      ></SectionTitle>
+      <Faq />
+      {/* <Cta /> */}
+      <Footer />
+      <PopupWidget />
+    </>
   );
-}
+};
+
+export default page;
