@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="my-10 text-xl text-center text-gray-600">
           Copyright © {new Date().getFullYear()}. Made by{" "}
           <a href="" target="_blank" rel="noopener">
-            Group No
+            Group No 3
           </a>{" "}
         </div>
       </Container>
