@@ -2,16 +2,10 @@
 import Image from "next/image";
 import Container from "./container";
 import heroImg from "../../public/img/ai.png";
-import finance from "../../public/img/Ministry/finance.png";
-import health from "../../public/img/Ministry/health.png";
-import education from "../../public/img/Ministry/education.png";
-import railway from "../../public/img/Ministry/railway.png";
-import water from "../../public/img/Ministry/water.png";
-import road from "../../public/img/Ministry/road.png";
 import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+
 
 const Hero = () => {
   const router = useRouter();
