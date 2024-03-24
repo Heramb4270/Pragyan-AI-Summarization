@@ -9,10 +9,6 @@ export default function signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [phoneNo, setPhoneNo] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [wardNo, setWardNo] = useState("");
   const router = useRouter();
 
   const handleFullnameChange = (e) => {
@@ -31,18 +27,6 @@ export default function signup() {
     setConfirmPassword(e.target.value);
   };
 
-  const handlePhoneNoChange = (e) => {
-    setPhoneNo(e.target.value);
-  };
-  const handleStateChange = (e) => {
-    setState(e.target.value);
-  };
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
-  const handleWardChange = (e) => {
-    setWardNo(e.target.value);
-  };
   const handleAcceptTermsChange = (e) => {
     setAcceptTerms(e.target.checked);
   };
@@ -60,14 +44,9 @@ export default function signup() {
         "Content-Type": "applicatiom/json",
       },
       body: JSON.stringify({
-        fullname: fullname,
+        name: fullname,
         email: email,
         password: password,
-        phoneNo: phoneNo,
-        state: state,
-        city: city,
-        wardNo: wardNo,
-        role : "user"
       }),
     });
 
@@ -83,7 +62,11 @@ export default function signup() {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+          <img
+            src="https://flowbite.com/docs/images/logo.svg"
+            class="h-8 me-3"
+            alt="FlowBite Logo"
+          />
           प्रज्ञान Ai
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -169,7 +152,7 @@ export default function signup() {
                   required
                 />
               </div>
-              
+
               <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input

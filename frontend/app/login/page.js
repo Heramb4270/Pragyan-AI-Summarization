@@ -14,40 +14,34 @@ export default function Login() {
     console.log(username);
     console.log(password);
 
-    if (username == "superadmin@gmail.com" && password == "superadmin") {
-      localStorage.setItem("name", "superadmin");
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
 
-      router.push("/superadmin");
-    } else {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
+    const data = await response.json();
+    console.log(data);
 
-      const data = await response.json();
-      console.log(data);
-
-      if (response.status === 400) {
-        setMessage(data.message);
-        return;
-      }
-      console.log(data + "This is My Datas");
-      const userId = data.user[0].fullname;
-      const id = data.user[0].id;
-
-      console.log(userId);
-      localStorage.setItem("name", userId);
-      localStorage.setItem("id", id);
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
-      router.push("/user");
+    if (response.status === 400) {
+      setMessage(data.message);
+      return;
     }
+    console.log(data + "This is My Datas");
+    const userId = data.user[0].name;
+    const id = data.user[0].id;
+
+    console.log(userId);
+    localStorage.setItem("name", userId);
+    localStorage.setItem("id", id);
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+    router.push("/");
   }
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -56,7 +50,11 @@ export default function Login() {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+          <img
+            src="https://flowbite.com/docs/images/logo.svg"
+            class="h-8 me-3"
+            alt="FlowBite Logo"
+          />
           प्रज्ञान Ai
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

@@ -1,5 +1,6 @@
 "use client";
 import NavBar from "@/components/NavBar";
+// import Navbar from "@/components/Home/navbar";
 import SideBar from "@/components/SideBar";
 import { useState } from "react";
 import TextSummarizer from "@/components/TextSummarizer";
@@ -11,7 +12,6 @@ import ExcelSummarizer from "@/components/ExcelSummarizer";
 import AudioSummarizer from "@/components/AudioSummarizer";
 import ArticleSummarizer from "@/components/ArticleSummarizer";
 import SentimentAnalysis from "@/components/SentimentAnalysis";
-
 
 export default function Home() {
   const [component, setComponent] = useState("text-summarizer");
