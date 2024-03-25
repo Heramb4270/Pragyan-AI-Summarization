@@ -31,33 +31,27 @@ export default function Home() {
 
       <div class="p-4 sm:ml-64">
         <div class="rounded-lg mt-20">
-          <div hidden={component !== "text-summarizer"}>
+          {component === "text-summarizer" ? (
             <TextSummarizer />
-          </div>
-          <div hidden={component !== "pdf-summarizer"}>
+          ) : component === "pdf-summarizer" ? (
             <PdfSummarizer />
-          </div>
-          <div hidden={component !== "document-summarizer"}>
+          ) : component === "document-summarizer" ? (
             <DocumentSummarizer />
-          </div>
-          <div hidden={component !== "image-summarizer"}>
+          ) : component === "image-summarizer" ? (
             <ImageSummarizer />
-          </div>
-          <div hidden={component !== "video-summarizer"}>
+          ) : component === "video-summarizer" ? (
             <VideoSummarizer />
-          </div>
-          <div hidden={component !== "excel-summarizer"}>
+          ) : component === "excel-summarizer" ? (
             <ExcelSummarizer />
-          </div>
-          <div hidden={component !== "audio-summarizer"}>
+          ) : component === "audio-summarizer" ? (
             <AudioSummarizer />
-          </div>
-          <div hidden={component !== "article-summarizer"}>
+          ) : component === "article-summarizer" ? (
             <ArticleSummarizer />
-          </div>
-          <div hidden={component !== "sentiment-analysis"}>
+          ) : component === "sentiment-analysis" ? (
             <SentimentAnalysis />
-          </div>
+          ) : (
+            <TextSummarizer />
+          )}
         </div>
       </div>
     </div>

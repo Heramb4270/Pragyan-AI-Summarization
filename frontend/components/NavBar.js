@@ -53,7 +53,7 @@ export default function NavBar() {
           </div>
           <div class="self-center hidden md:flex items-center space-x-4 ">
             <Link
-              href="/home"
+              href="/"
               class="self-center inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md  hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-200 dark:hover:text-indigo-500 dark:focus:text-indigo-500 dark:focus:bg-indigo-100"
             >
               Home
