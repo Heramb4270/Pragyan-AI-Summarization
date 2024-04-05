@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import google.generativeai as genai
 import pandas as pd
-
+import chardet
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from text_summarizer import get_text_summary
@@ -13,7 +13,9 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def excel_summary(filename):
 
-    df = pd.read_csv("./data/"+filename)
+    with open("./data/"+filename, 'rb') as f:
+        result = chardet.detect(f.read())
+    df = pd.read_csv("./data/"+filename, encoding=result['encoding'])
     # print(df)
     for index, row in df.iterrows():
      row_text = " ".join(str(value) for value in row.tolist())  # Combine row values into a string
@@ -27,7 +29,7 @@ def excel_summary(filename):
     prompt_ai_template = PromptTemplate(
         input_variables=['row','col'],
         template="""
-        This is the excel csv file 
+       This is the excel csv file 
 
         Can you analyze the data and provide insights such as:
         * Key themes or topics

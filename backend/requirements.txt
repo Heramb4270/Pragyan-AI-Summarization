@@ -1,0 +1,9 @@
+Flask
+pandas
+google-generativeai
+langchain
+python-dotenv
+python-docx
+youtube-transcript-api
+SpeechRecognition
+PyPDF2

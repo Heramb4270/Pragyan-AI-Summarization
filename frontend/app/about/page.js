@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "@/components/Home/navbar"
+import NavBar from "@/components/Home/navbar";
 
 function page() {
   return (
@@ -17,11 +17,16 @@ function page() {
               About us
             </span>
             <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">
-              About <span class="text-indigo-600
+              About{" "}
+              <span
+                class="text-indigo-600
                 dark:text-indigo-400
-              ">Our Company</span>
+              "
+              >
+                Our Company
+              </span>
             </h2>
-            <p class="text-gray-700 dark:text-gray-300">
+            <p class="text-gray-700 dark:text-gray-300 ">
               Pragyan provides a number of smart AI tools that will help you to
               save your time by means of summarzing the text, generating the
               text, and many more. We are a team of developers who are

@@ -3,7 +3,9 @@ from flask_cors import CORS
 # import json
 import pandas as pd
 import uuid
+
 import os
+import chardet
 # import custom functions
 from text_summarizer import get_text_summary
 from pdf_summarizer import get_pdf_summary
@@ -85,6 +87,7 @@ def excel_summary_api():
 
     if  file.filename.endswith(".xlsx"):
         try:
+
             df = pd.read_excel(file, engine="openpyxl")
             df.to_csv('./data/'+file.filename, index=False)
             summary = excel_summary(file.filename)
